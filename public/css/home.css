@@ -1,0 +1,38 @@
+body {
+    color: #636b6f;
+    font-family: "Nunito", sans-serif;
+}
+
+.title {
+    font-weight: 200;
+    font-size: 15rem;
+    margin-top: 100px;
+}
+
+.spacer {
+    font-size: 1.8rem;
+    margin: 0px 3px;
+}
+a {
+    font-size: 1.8rem;
+    color: #636b6f;
+    text-decoration: none;
+}
+
+a:hover {
+    text-decoration: none;
+    color: #b1c2cb;
+    font-size: 1.8rem;
+}
+
+.about {
+    margin-top: 120px;
+    display: none;
+}
+
+.about-text {
+    font-size: 1.8rem;
+}
+#hoge {
+    display: none;
+}
