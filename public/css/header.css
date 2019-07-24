@@ -1,0 +1,4 @@
+/*固定ヘッダー設定のための、contentのheader下への潜り込みの回避*/
+body {
+    margin-top: 60px;
+}

@@ -1,5 +1,5 @@
-<div id="app">
-<nav class="navbar navbar-expand-md navbar-light bg-white shadow-sm">
+
+<nav class="navbar navbar-expand-md navbar-light bg-white shadow-sm fixed-top">
     <div class="container">
         <a class="navbar-brand" href="{{ url('/') }}">
             {{ config('app.name', 'Laravel') }}
@@ -11,7 +11,21 @@
         <div class="collapse navbar-collapse" id="navbarSupportedContent">
             <!-- Left Side Of Navbar -->
             <ul class="navbar-nav mr-auto">
+              <li class="nav-item">
+              <a class="nav-link" href="{{ route('posts.index') }}">{{ __('質問一覧') }}</a>
+              </li>
 
+              <li class="nav-item">
+                <a class="nav-link" href="{{ route('posts.create') }}">{{ __('質問投稿') }}</a>
+              </li>
+
+              <li class="nav-item">
+                <a class="nav-link" href="#">{{ __('BBS') }}</a>
+              </li>
+
+              <li class="nav-item">
+                <a class="nav-link" href="#">{{ __('お店を探す') }}</a>
+              </li>
             </ul>
 
             <!-- Right Side Of Navbar -->
@@ -49,4 +63,3 @@
         </div>
     </div>
 </nav>
-</div>
