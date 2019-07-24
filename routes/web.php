@@ -15,4 +15,8 @@
 //     return view('welcome');
 // });
 
-Route::get('/', 'HomeController@index');
+Route::get('/home', 'HomeController@index')->name('home');
+Route::get('/', 'StaticPageController@index')->name('lp');
+Route::get('/users/{id}', 'UserController@show')->name('users.show');
+Route::get('/users/{id}/edit', 'UserController@edit')->name('users.edit');
+Auth::routes();
