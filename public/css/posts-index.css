@@ -1,0 +1,14 @@
+div > a {
+    color: black;
+    font-weight: bold;
+}
+
+div > a:hover {
+    text-decoration: none;
+    color: black;
+    font-weight: bold;
+}
+
+a > div:hover {
+    opacity: 0.7;
+}

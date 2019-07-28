@@ -23,6 +23,10 @@ Route::get('/users/{id}/edit', 'UserController@edit')->name('users.edit');
 // posts
 Route::get('/posts/index', 'PostController@index')->name('posts.index');
 Route::get('/posts/create', 'PostController@create')->name('posts.create');
-ROute::post('/users/{id}/posts/store', 'PostController@store')->name('posts.store');
+Route::post('/posts/store', 'PostController@store')->name('posts.store');
+Route::get('/posts/{id}', 'PostController@show')->name('posts.show');
+Route::get('/posts/{id}/edit', 'PostController@edit')->name('posts.edit');
+Route::patch('/posts/{id}', 'PostController@update')->name('posts.update');
+Route::delete('/posts/{id}', 'PostController@remove')->name('posts.remove');
 // auth
 Auth::routes();

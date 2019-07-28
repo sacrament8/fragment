@@ -5,6 +5,9 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Post;
 use App\Http\Requests\StorePost;
+use App\Http\Requests\UpdatePost;
+use Illuminate\Auth\Access\AuthorizationException;
+use Illuminate\Support\Facades\Auth;
 
 class PostController extends Controller
 {
@@ -23,7 +26,52 @@ class PostController extends Controller
 
     public function store(StorePost $request)
     {
-        $post = Auth::user()->posts()->fill($request->all())->save();
+        $post = new Post();
+        $post->title = $request->title;
+        $post->src = $request->src;
+        $post->content = $request->content;
+
+        $post = Auth::user()->posts()->save($post);
         return redirect()->route('posts.show', ['id' => $post->id]);
+    }
+
+    public function show(int $id)
+    {
+        $post = Post::find($id);
+
+        return view('posts.show', [
+            'post' => $post,
+        ]);
+    }
+
+    public function edit(int $id)
+    {
+        $post = Post::find($id);
+
+        return view('posts.edit', [
+            'post' => $post,
+        ]);
+    }
+
+    public function update(UpdatePost $request, int $id)
+    {
+        $post = Post::find($id);
+        $post->title = $request->title;
+        $post->src = $request->src;
+        $post->content = $request->content;
+        $post->save();
+
+        return view('posts.show', [
+            'post' => $post,
+        ]);
+    }
+
+    public function remove(int $id)
+    {
+        $post = Post::find($id)->delete();
+
+        return view('posts.index', [
+            'posts' => Post::all(),
+        ]);
     }
 }
