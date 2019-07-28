@@ -19,7 +19,7 @@
         </div>
         <div class="card-footer text-right">投稿者: 
           <a href="{{ route('users.show', ['id' => $post->user_id]) }}">
-            {{ Auth::user()->name }}
+            {{ App\User::find($post->user_id)->name }}
           </a>
         </div>
       </div>
