@@ -23,6 +23,8 @@
         </td>
       </tbody>
   </table>
+  {{-- <div>
+    <a href="{{ route('users.edit', ['id' => $current_user->id]) }}" class="btn btn-primary">ユーザー情報変更</a>
+  </div> --}}
 </div>
-<a href="{{ route('users.edit', ['id' => $current_user->id]) }}" class="btn btn-primary">ユーザー情報変更</a>
 @endsection

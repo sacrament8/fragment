@@ -13,4 +13,8 @@ class Post extends Model
     {
         return $this->belongsTo('App\User');
     }
+    public function getPostDate()
+    {
+        return $this->created_at->format('Y年m月d日 H:i');
+    }
 }

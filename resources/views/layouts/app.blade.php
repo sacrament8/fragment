@@ -25,7 +25,7 @@
   
 </head>
 <body>
-    @unless(Request::is('/'))
+    @unless(Request::is('/', 'login', 'register'))
       @include('layouts.header')
     @endunless
     
