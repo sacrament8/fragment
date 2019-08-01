@@ -17,6 +17,7 @@
 
 // ランディングページ
 Route::get('/', 'StaticPageController@index')->name('lp');
+
 // users
 Route::get('/users/{id}', 'UserController@show')->name('users.show');
 Route::get('/users/{id}/edit', 'UserController@edit')->name('users.edit');
@@ -34,7 +35,7 @@ Route::get('/boards/create', 'BoardController@create')->name('boards.create');
 Route::post('/boards', 'BoardController@store')->name('boards.store');
 Route::get('/boards/{id}', 'BoardController@show')->name('boards.show');
 // comments
-// Route::post('/boards/{id}/comments', 'CommentController@store')->name('comments.store');
+Route::post('/boards/{id}/store', 'CommentController@store')->name('comments.store');
 
 // auth
 Auth::routes();
