@@ -20,12 +20,12 @@
               </li>
 
               <li class="nav-item">
-                <a class="nav-link" href="#">{{ __('BBS') }}</a>
+                <a class="nav-link" href="{{ route('boards.index') }}">{{ __('掲示板') }}</a>
               </li>
 
-              <li class="nav-item">
+              {{--  <li class="nav-item">
                 <a class="nav-link" href="#">{{ __('お店を探す') }}</a>
-              </li>
+              </li>  --}}
             </ul>
 
             <!-- Right Side Of Navbar -->

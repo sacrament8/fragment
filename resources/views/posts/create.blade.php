@@ -8,7 +8,7 @@
     <div class="row">
       <div class="col-10 offset-1">
         @include('layouts.errors')
-        <form class="mt-5" action="/posts/store" method="POST">
+      <form class="mt-5" action="{{ route('posts.store') }}" method="POST">
           @csrf
           <div class="form-group">
             <label for="title-arae">タイトル</label>
@@ -23,7 +23,7 @@
             <textarea name="content" id="content-area" class="form-control" rows="6">{{ old('content') }}</textarea>
           </div>
           <div>
-            <input class="btn btn-primary col-4 offset-4" type="submit" value="投稿">
+            <input class="btn btn-primary col-4 offset-4 mb-3" type="submit" value="投稿">
           </div>
         </form>
       </div>

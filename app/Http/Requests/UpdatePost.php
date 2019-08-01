@@ -24,7 +24,7 @@ class UpdatePost extends FormRequest
     public function rules()
     {
         return [
-            'title' => 'required|max:100',
+            'title' => 'required|max:50',
             'content' => 'required',
         ];
     }
