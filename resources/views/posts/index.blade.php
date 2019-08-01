@@ -6,15 +6,23 @@
 @section('content')
   <div class="container">
     <div class="row">
-      @foreach ($posts as $post)
-      <div class="col-10 offset-1 my-2">
-        <a href="{{ route('posts.show', ['id'=>$post->id]) }}">
+      @if ($posts->isEmpty())
+        <div class="col-10 offset-1 mt-5">
           <div class="card">
-            <div class="card-body"><div class="float-left">{{ $post->title }}</div><div class="float-right">投稿日時: {{ $post->getPostDate() }}</div></div>
+            <p class="text-center py-5 h4">質問が存在しません</p>
           </div>
-        </a>
-      </div>
-      @endforeach
+        </div>
+      @else
+        @foreach ($posts as $post)
+          <div class="col-10 offset-1 my-2">
+            <a href="{{ route('posts.show', ['id'=>$post->id]) }}">
+              <div class="card">
+              <div class="card-body"><div class="float-left">{{ $post->title }}</div>
+              <div class="float-right">投稿日時: {{ $post->getPostDate() }}</div>
+            </a>
+          </div>
+        @endforeach
+      @endif
     </div>
   </div>
 @endsection

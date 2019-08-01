@@ -23,7 +23,7 @@
             <textarea name="content" id="content-area" class="form-control" rows="6">{{ old('content') }}</textarea>
           </div>
           <div>
-            <input class="btn btn-primary col-4 offset-4" type="submit" value="投稿">
+            <input class="btn btn-primary col-4 offset-4 mb-3" type="submit" value="投稿">
           </div>
         </form>
       </div>
