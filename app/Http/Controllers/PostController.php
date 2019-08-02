@@ -43,9 +43,11 @@ class PostController extends Controller
     public function show(int $id)
     {
         $post = Post::find($id);
+        $answers = $post->answers();
 
         return view('posts.show', [
             'post' => $post,
+            'answers' => $answers,
         ]);
     }
 

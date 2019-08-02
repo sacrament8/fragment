@@ -36,6 +36,9 @@ Route::post('/boards', 'BoardController@store')->name('boards.store');
 Route::get('/boards/{id}', 'BoardController@show')->name('boards.show');
 // comments
 Route::post('/boards/{id}/store', 'CommentController@store')->name('comments.store');
+// answers
+Route::post('/answers/{id}/store', 'AnswerController@store')->name('answers.store');
+Route::delete('/posts/{post_id}/answers/{answer_id}', 'AnswerController@remove')->name('answers.remove');
 
 // auth
 Auth::routes();

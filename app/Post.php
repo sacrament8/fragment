@@ -17,4 +17,9 @@ class Post extends Model
     {
         return $this->created_at->format('Y年m月d日 H:i');
     }
+
+    public function answers()
+    {
+        return $this->hasMany('App\Answer');
+    }
 }
