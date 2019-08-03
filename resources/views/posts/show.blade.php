@@ -83,7 +83,7 @@
           <textarea class="src-area form-control" name="src" id="content-area" rows="5">{{ old('src') }}</textarea>
         </div>
         <div class="form-group">
-            <label for="content-area">回答内容</label>
+            <label for="content-area">回答内容(必須)</label>
           <textarea class="content-area form-control" name="content" id="content-area" rows="5">{{ old('content') }}</textarea>
         </div>
         <div>

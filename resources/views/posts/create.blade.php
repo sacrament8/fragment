@@ -11,7 +11,7 @@
       <form class="mt-5" action="{{ route('posts.store') }}" method="POST">
           @csrf
           <div class="form-group">
-            <label for="title-arae">タイトル</label>
+            <label for="title-arae">タイトル(必須)</label>
             <input type="text" name="title" id="title-area" class="form-control" value="{{ old('title') }}">
           </div>
           <div class="form-group">
@@ -19,7 +19,7 @@
             <textarea class="src-area form-control" name="src" id="source-area" rows="8">{{ old('src') }}</textarea>
           </div>
           <div class="form-group">
-            <label for="content-area">質問内容</label>
+            <label for="content-area">質問内容(必須)</label>
             <textarea name="content" id="content-area" class="form-control" rows="6">{{ old('content') }}</textarea>
           </div>
           <div>
