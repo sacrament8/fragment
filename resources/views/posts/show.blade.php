@@ -65,9 +65,9 @@
                 <input class="btn btn-danger ml-1" type="submit" value="回答を取り下げる" onclick='return confirm("本当に取り下げますか？");'>
               </form>
             </div>
-            {{--  <div class="float-right mt-3">
-              <a class="btn btn-primary" href="{{ route('answer.edit', ['id'=>$answer->id]) }}">回答内容を修正する</a>
-            </div>  --}}
+            <div class="float-right mt-3">
+              <a class="btn btn-primary" href="{{ route('answers.edit', ['post_id'=>$post->id, 'answer_id'=>$answer->id]) }}">回答内容を修正する</a>
+            </div>
             <br>
             <br>
           @endif

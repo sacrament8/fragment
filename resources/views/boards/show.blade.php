@@ -20,12 +20,13 @@
           </div>
         </div>
         {{--comment index--}}
+        <?php $counter = 1; ?>
         @unless ($board->comments->isEmpty())
           @foreach ($board->comments as $comment)
             <div class="card mt-3">
                 <div class="card-header">
                   <div class="float-left">
-                    {{ $comment->id}}. 
+                    {{ $counter }}. 
                     <a href="{{ route('users.show', ['id' => $comment->user_id]) }}">
                       {{ App\User::find($comment->user_id)->name }}
                     </a>
@@ -38,6 +39,7 @@
                 {!! nl2br(e($comment->content)) !!}
               </div>
             </div>
+            <?php $counter++; ?>
           @endforeach
         @endunless
         {{--comment form--}}

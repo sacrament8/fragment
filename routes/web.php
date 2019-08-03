@@ -39,6 +39,8 @@ Route::post('/boards/{id}/store', 'CommentController@store')->name('comments.sto
 // answers
 Route::post('/answers/{id}/store', 'AnswerController@store')->name('answers.store');
 Route::delete('/posts/{post_id}/answers/{answer_id}', 'AnswerController@remove')->name('answers.remove');
+Route::get('/posts/{post_id}/answers/{answer_id}/edit', 'AnswerController@edit')->name('answers.edit');
+Route::patch('/posts/{post_id}/answers/{answer_id}', 'AnswerController@update')->name('answers.update');
 
 // auth
 Auth::routes();
