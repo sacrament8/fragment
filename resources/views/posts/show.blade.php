@@ -65,9 +65,9 @@
                 <input class="btn btn-danger ml-1" type="submit" value="回答を取り下げる" onclick='return confirm("本当に取り下げますか？");'>
               </form>
             </div>
-            {{--  <div class="float-right mt-3">
-              <a class="btn btn-primary" href="{{ route('answer.edit', ['id'=>$answer->id]) }}">回答内容を修正する</a>
-            </div>  --}}
+            <div class="float-right mt-3">
+              <a class="btn btn-primary" href="{{ route('answers.edit', ['post_id'=>$post->id, 'answer_id'=>$answer->id]) }}">回答内容を修正する</a>
+            </div>
             <br>
             <br>
           @endif
@@ -83,7 +83,7 @@
           <textarea class="src-area form-control" name="src" id="content-area" rows="5">{{ old('src') }}</textarea>
         </div>
         <div class="form-group">
-            <label for="content-area">回答内容</label>
+            <label for="content-area">回答内容(必須)</label>
           <textarea class="content-area form-control" name="content" id="content-area" rows="5">{{ old('content') }}</textarea>
         </div>
         <div>

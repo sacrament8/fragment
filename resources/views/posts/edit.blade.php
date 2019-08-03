@@ -1,5 +1,5 @@
 @extends('layouts.app')
-@section('title', '質問投稿ページ')
+@section('title', '質問編集ページ')
 @section('css')
   <link rel="stylesheet" href="/css/form.css">
 @endsection

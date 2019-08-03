@@ -20,19 +20,26 @@
           </div>
         </div>
         {{--comment index--}}
+        <?php $counter = 1; ?>
         @unless ($board->comments->isEmpty())
           @foreach ($board->comments as $comment)
             <div class="card mt-3">
+                <div class="card-header">
+                  <div class="float-left">
+                    {{ $counter }}. 
+                    <a href="{{ route('users.show', ['id' => $comment->user_id]) }}">
+                      {{ App\User::find($comment->user_id)->name }}
+                    </a>
+                  </div>
+                  <div class="float-right">
+                    {{ $comment->getCreatedDate() }}
+                  </div>
+                </div>
               <div class="card-body">
                 {!! nl2br(e($comment->content)) !!}
               </div>
-              <div class="card-footer text-right">
-                  投稿者: 
-                  <a href="{{ route('users.show', ['id' => $comment->user_id]) }}">
-                    {{ App\User::find($comment->user_id)->name }}
-                  </a>
-              </div>
             </div>
+            <?php $counter++; ?>
           @endforeach
         @endunless
         {{--comment form--}}
