@@ -17,7 +17,7 @@ class BoardController extends Controller
 
     public function index()
     {
-        $boards = Board::all();
+        $boards = Board::paginate(15);
 
         return view('boards.index', [
             'boards' => $boards,

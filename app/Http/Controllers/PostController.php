@@ -9,6 +9,7 @@ use App\Http\Requests\UpdatePost;
 use Illuminate\Auth\Access\AuthorizationException;
 use Illuminate\Support\Facades\Auth;
 
+
 class PostController extends Controller
 {
     public function __construct()
@@ -18,7 +19,7 @@ class PostController extends Controller
 
     public function index()
     {
-        $posts = Post::all();
+        $posts = Post::paginate(15);
         return view('posts.index', [
             'posts' => $posts,
         ]);

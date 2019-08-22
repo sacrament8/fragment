@@ -25,6 +25,9 @@
             </a>
           </div>
         @endforeach
+        <div class="my-4 mx-auto">
+          {{ $posts->links() }}
+        </div>
       @endif
     </div>
   </div>
