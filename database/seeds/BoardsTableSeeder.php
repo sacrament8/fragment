@@ -20,6 +20,8 @@ class BoardsTableSeeder extends Seeder
                     'title' => User::find($user_id)->name . 'が立てたスレッド' . $i,
                     'content' => User::find($user_id)->name . 'が立てたスレッドです、自由に書き込んでください。',
                     'user_id' => $user_id,
+                    'created_at' => Carbon::today(),
+                    'updated_at' => Carbon::today(),
                 ]);
             }
         }
