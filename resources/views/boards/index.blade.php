@@ -13,7 +13,7 @@
         <form action="{{ route('boards.index') }}" method="GET">
           <div class="row mt-4">
             <div class="form-group offset-2 col-5">
-              <input type="text" value="" class="form-control" name="search">
+              <input type="text" value="" class="form-control" name="search" placeholder="掲示板のタイトルを入力してください">
             </div>
             <div class="form-group col-3">
               <input type="submit" class="btn-primary btn form-control" value="掲示板を探す">
