@@ -8,6 +8,20 @@
 @section('content')
   <div class="container">
     <div class="row">
+      <!-- 掲示板検索フォーム -->
+      <div class="col-10 offset-1 my-1">
+        <form action="{{ route('boards.index') }}" method="GET">
+          <div class="row mt-4">
+            <div class="form-group offset-2 col-5">
+              <input type="text" value="" class="form-control" name="search">
+            </div>
+            <div class="form-group col-3">
+              <input type="submit" class="btn-primary btn form-control" value="掲示板を探す">
+            </div>
+          </div>
+        </form>
+      </div>
+      <!-- スレッド一覧 -->
       @if ($boards->isEmpty())
         <div class="col-10 offset-1 mt-5">
           <div class="card">
@@ -33,10 +47,10 @@
               </div>
             </a>
           @endforeach
-          
+        <!-- ページネーションリンク -->
         </div>
         <div class="my-4 mx-auto">
-            {{ $boards->links() }}
+            {{ $boards->appends(request()->query())->links() }}
         </div>
             <div class="col-10 offset-1 my-3">
                 <a class="btn btn-primary col-12" href="{{ route('boards.create') }}">スレッドを新規作成</a>
