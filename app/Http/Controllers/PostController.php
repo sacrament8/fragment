@@ -17,9 +17,14 @@ class PostController extends Controller
         $this->middleware('auth');
     }
 
-    public function index()
+    public function index(Request $request)
     {
-        $posts = Post::paginate(15);
+        if (empty($request->search)) {
+            $posts = Post::paginate(15);
+        } else {
+            $search = $request->search;
+            $posts = Post::where('title', 'LIKE', "%$search%")->paginate(15);
+        }
         return view('posts.index', [
             'posts' => $posts,
         ]);

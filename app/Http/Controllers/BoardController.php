@@ -17,6 +17,7 @@ class BoardController extends Controller
 
     public function index(Request $request)
     {
+        // フォームからのリクエストかどうか分岐
         if (empty($request->search)) {
             $boards = Board::paginate(15);
         } else {

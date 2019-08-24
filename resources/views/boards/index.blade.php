@@ -52,10 +52,9 @@
         <div class="my-4 mx-auto">
             {{ $boards->appends(request()->query())->links() }}
         </div>
-            <div class="col-10 offset-1 my-3">
-                <a class="btn btn-primary col-12" href="{{ route('boards.create') }}">スレッドを新規作成</a>
-            </div>
-
+          <div class="col-10 offset-1 my-3">
+            <a class="btn btn-primary col-12" href="{{ route('boards.create') }}">スレッドを新規作成</a>
+          </div>
       @endif
     </div>
   </div>
