@@ -15,9 +15,15 @@ class BoardController extends Controller
         $this->middleware('auth');
     }
 
-    public function index()
+    public function index(Request $request)
     {
-        $boards = Board::paginate(15);
+        // フォームからのリクエストかどうか分岐
+        if (empty($request->search)) {
+            $boards = Board::paginate(15);
+        } else {
+            $search = $request->search;
+            $boards = Board::where('title', 'LIKE', "%$search%")->paginate(15);
+        }
 
         return view('boards.index', [
             'boards' => $boards,

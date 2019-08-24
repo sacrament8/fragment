@@ -6,6 +6,20 @@
 @section('content')
   <div class="container">
     <div class="row">
+      <!-- 投稿検索フォーム -->
+      <div class="col-10 offset-1 my-1">
+          <form action="{{ route('posts.index') }}" method="GET">
+            <div class="row mt-4">
+              <div class="form-group offset-2 col-5">
+                <input type="text" value="" class="form-control" name="search" placeholder="質問投稿のタイトルを入力してください">
+              </div>
+              <div class="form-group col-3">
+                <input type="submit" class="btn-primary btn form-control" value="質問投稿を探す">
+              </div>
+            </div>
+          </form>
+        </div>
+        <!-- 投稿一覧 -->
       @if ($posts->isEmpty())
         <div class="col-10 offset-1 mt-5">
           <div class="card">
@@ -26,7 +40,7 @@
           </div>
         @endforeach
         <div class="my-4 mx-auto">
-          {{ $posts->links() }}
+          {{ $posts->appends(request()->query())->links() }}
         </div>
       @endif
     </div>

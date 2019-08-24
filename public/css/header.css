@@ -1,4 +1,13 @@
 /*固定ヘッダー設定のための、contentのheader下への潜り込みの回避*/
 body {
     margin-top: 60px;
+    text-decoration: none;
+}
+
+.btn-link:hover {
+    text-decoration: none;
+    opacity: 0.7;
+}
+.btn-link:focus {
+    text-decoration: none;
 }
