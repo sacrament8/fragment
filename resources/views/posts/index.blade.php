@@ -33,6 +33,7 @@
               <div class="card">
                 <div class="card-body">
                   <div class="float-left">{{ $post->title }}</div>
+                  <div class="float-right"> [回答数: {{ $post->getHasAnswerCount($post->id) }}]</div>
                   <div class="float-right">投稿日時: {{ $post->getPostDate() }}</div>
                 </div>
               </div>

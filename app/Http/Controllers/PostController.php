@@ -25,6 +25,7 @@ class PostController extends Controller
             $search = $request->search;
             $posts = Post::where('title', 'LIKE', "%$search%")->paginate(15);
         }
+
         return view('posts.index', [
             'posts' => $posts,
         ]);
