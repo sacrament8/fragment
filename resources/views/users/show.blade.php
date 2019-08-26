@@ -9,8 +9,27 @@
     <!-- side menu -->
     <div class="col-3 mt-3">
       <div class="card">
-        <div class="card-body" style="height: 650px;">
+        <div class="card-header bg-dark text-light text-center">
+          User Infomation
+        </div>
+        @if (false)  <!--user_infoインスタンスのavaterカラムが空なら-->
           hoge
+        @else
+          <img class="card-img-top" src="/images/no-image.jpg" alt="アバター画像">
+        @endif
+        <div class="card-body side">
+          <div class="text-center mb-3 mt-2">
+            <a href="#" class="btn btn-primary">アバター変更</a>
+          </div>
+          <div class="info">
+            ユーザー名: {{ Auth::user()->name }}
+          </div>
+          <div class="info">
+          質問回数: {{ $selfPostsCount }}
+          </div>
+          <div class="info">
+          回答回数: {{ $selfAnswersCount }}
+          </div>
         </div>
       </div>
     </div>
@@ -34,6 +53,7 @@
                 <tr>
                   <th>投稿タイトル</th>
                   <th>質問内容</th>
+                  <th>投稿日時</th>
                 </tr>
                 @foreach ($posts as $post)
                   <tr class="change-opacity">
@@ -43,6 +63,7 @@
                       </a>
                     </td>
                     <td  style="max-width: 260px; max-height: 80px;">{{ $post->content }}</td>
+                    <td>{{ $post->getCreatedDate() }}</td>
                   </tr>
                 @endforeach
               </tbody>
@@ -66,6 +87,7 @@
                 <tr>
                   <th scope="row">投稿タイトル</th>
                   <th scope="row">回答内容</th>
+                  <th scope="row">回答日時</th>
                 </tr>
                 @foreach ($answers as $answer)
                   <tr class="change-opacity">
@@ -75,6 +97,7 @@
                       </a>
                     </td>
                     <td style="max-width: 260px; max-height: 80px;">{{ $answer->content}}</td>
+                    <td>{{ $answer->getCreatedDate() }}</td>
                   </tr>
                 @endforeach
               </tbody>

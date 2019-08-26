@@ -20,10 +20,14 @@ class UserController extends Controller
         $current_user = User::find($id);
         $posts = Post::where('user_id', Auth::id())->orderBy('created_at', 'desc')->take(5)->get();
         $answers = Answer::where('user_id', Auth::id())->orderBy('created_at', 'desc')->take(5)->get();
+        $selfPostsCount = Post::where('user_id', Auth::id())->count();  // ログインユーザの投稿件数
+        $selfAnswersCount = Answer::where('user_id', Auth::id())->count();  // ログインユーザの回答件数
         return view('users.show', [
             'current_user' => $current_user,
             'posts' => $posts,
             'answers' => $answers,
+            'selfPostsCount' => $selfPostsCount,
+            'selfAnswersCount' => $selfAnswersCount,
         ]);
     }
 

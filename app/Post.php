@@ -22,4 +22,9 @@ class Post extends Model
     {
         return $this->hasMany('App\Answer');
     }
+
+    public function getCreatedDate()
+    {
+        return $this->created_at->format('Y年m月d日 H:i');
+    }
 }

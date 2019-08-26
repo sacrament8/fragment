@@ -17,12 +17,18 @@ class CommentsTableSeeder extends Seeder
         for ($board_id = 1; $board_id <= 303; $board_id++) {
             for ($i = 1; $i <= 10; $i++) {
                 $user_id = rand(1, 101);
+                $start = Carbon::create("2019", "1", "1", "0", "0");
+                $end = Carbon::create("2019", "9", "5", "0", "0");
+                $min = strtotime($start);
+                $max = strtotime($end);
+                $date = rand($min, $max);
+                $date = date('Y-m-d', $date);
                 Comment::create([
                     'content' => User::find($user_id)->name . 'です、こんにちは' . "\n" . 'テスト書き込みさせていただきます。',
                     'user_id' => $user_id,
                     'board_id' => $board_id,
-                    'created_at' => Carbon::today(),
-                    'updated_at' => Carbon::today(),
+                    'created_at' => $date,
+                    'updated_at' => $date,
                 ]);
             }
         }

@@ -33,13 +33,19 @@ EOD;
         // 質問投稿ダミーデータ
         for ($user_id = 1; $user_id <= 101; $user_id++) {
             for ($post_count = 1; $post_count <= 3; $post_count++) {
+                $start = Carbon::create("2019", "1", "1", "0", "0");
+                $end = Carbon::create("2019", "9", "5", "0", "0");
+                $min = strtotime($start);
+                $max = strtotime($end);
+                $date = rand($min, $max);
+                $date = date('Y-m-d', $date);
                 Post::create([
                     'title' => User::find($user_id)->name . 'の質問投稿' . $post_count,
                     'src' => $testCode,
                     'content' => '質問の内容 その' . $post_count,
                     'user_id' => $user_id,
-                    'created_at' => Carbon::today(),
-                    'updated_at' => Carbon::today(),
+                    'created_at' => $date,
+                    'updated_at' => $date,
                 ]);
             }
         }
