@@ -1,7 +1,7 @@
 @extends('layouts.app')
 @section('content')
 @section('css')
-  <link rel="stylesheet" href="users_show.css">
+  <link rel="stylesheet" href="/css/users_show.css">
 @endsection
 <div class="container mt-5">
   <div class="row">
@@ -36,9 +36,9 @@
                   <th>質問内容</th>
                 </tr>
                 @foreach ($posts as $post)
-                  <tr>
+                  <tr class="change-opacity">
                     <td>
-                      <a class="table_link" href="{{ route('posts.show', ["id"=>$post->id]) }}">
+                      <a class="table_link col-12 text-dark" href="{{ route('posts.show', ["id"=>$post->id]) }}">
                         {{ $post->title }}
                       </a>
                     </td>
@@ -56,7 +56,7 @@
             <!-- 個人の回答が存在しない -->
             @if (empty($answers))
               <tbody>
-                <tr>
+                <tr class="change-opacity">
                   <th scope="row">まだあたなの回答はありません</th>
                 </tr>
               </tbody>
@@ -68,9 +68,9 @@
                   <th scope="row">回答内容</th>
                 </tr>
                 @foreach ($answers as $answer)
-                  <tr>
+                  <tr class="change-opacity">
                     <td>
-                      <a class="table_link" href="{{ route('posts.show', ["id"=>$post->id]) }}">
+                      <a class="table_link text-dark" href="{{ route('posts.show', ["id"=>$post->id]) }}">
                         {{ $answer->post->title }}
                       </a>
                     </td>
