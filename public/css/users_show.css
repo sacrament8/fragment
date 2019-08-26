@@ -1,0 +1,12 @@
+.side {
+    height: 500px;
+    padding: 200px;
+}
+
+.table_link {
+    z-index: 9000;
+}
+td {
+    overflow: hidden;
+    white-space: nowrap;
+}
