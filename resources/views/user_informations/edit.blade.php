@@ -14,11 +14,11 @@
       <!--$userに紐づく$user_infoが存在し、nullでなければavatarカラムに保存した画像を表示、なければno-image.jpgを表示-->
       @if(!empty($user->userInformation->avatar))
         <div class="img-thumbnail mx-auto">
-          <img class="card-img-top" id="file-preview" src="{{ asset('/storage/avatar_images/'.$user->userInformation->avatar) }}">
+          <img class="card-img-top" id="avatar_img" src="{{ asset('/storage/avatar_images/'.$user->userInformation->avatar) }}">
         </div>
       @else
         <div class="img-thumbnail mx-auto">
-          <img class="card-img-top" id="file-preview" src="/images/no-image.jpg">
+          <img class="card-img-top" id="avatar_img" src="/images/no-image.jpg">
         </div>
       @endif
       <!--画像upload用form-->
@@ -26,7 +26,7 @@
         @include('layouts.errors')
         <form enctype="multipart/form-data" action="/userinfo" method="POST">
           @csrf
-          <input class="form-control btn btn-dark my-3" id="file-sample" type="file" name="avatar">
+          <input class="form-control btn btn-dark my-3" id="avatar_file" type="file" name="avatar">
           <input class="form-control btn btn-primary" type="submit" value="ユーザー情報を更新">
         </form>
       </div>
