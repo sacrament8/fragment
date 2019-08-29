@@ -11,3 +11,10 @@ body {
 .btn-link:focus {
     text-decoration: none;
 }
+.card {
+    box-shadow: 5px 4px 6px -6px #000000;
+    border-radius: 6px;
+}
+.head-icon {
+    color: rgb(134, 134, 255);
+}

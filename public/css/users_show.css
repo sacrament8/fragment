@@ -1,0 +1,36 @@
+.side {
+    height: 500px;
+    padding: 200px;
+}
+
+.table_link {
+    z-index: 9000;
+    display: block;
+    width: 100%;
+    height: 100%;
+}
+td {
+    overflow: hidden;
+    white-space: nowrap;
+}
+a:hover {
+    text-decoration: none;
+}
+.change-opacity:hover {
+    opacity: 0.5;
+}
+.side {
+    padding: 0;
+    margin-bottom: 20px;
+}
+.info {
+    font-size: 20px;
+    margin-left: 10px;
+}
+.side-height {
+    height: 700px;
+}
+.card-img-top {
+    height: 250px;
+    object-fit: cover;
+}

@@ -38,7 +38,8 @@
               <div class="card mt-3">
               <div class="card-body">
                 <div class="float-left">
-                {{ $board->title }}
+                  <span class="head-icon">●  </span>
+                  {{ $board->title }}
                 </div>
                 <div class="float-right">
                   スレッド作成日時: {{ $board->getCreatedDate() }}

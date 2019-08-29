@@ -46,4 +46,9 @@ class User extends Authenticatable
     {
         return $this->hasMany('App\Board');
     }
+
+    public function userInformation()
+    {
+        return $this->hasOne('App\UserInformation');
+    }
 }

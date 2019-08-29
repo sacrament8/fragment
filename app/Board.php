@@ -18,6 +18,6 @@ class Board extends Model
 
     public function getCreatedDate()
     {
-        return $this->created_at->format('Y年m月d日 H:i');
+        return $this->created_at->format('Y年m月d日');
     }
 }

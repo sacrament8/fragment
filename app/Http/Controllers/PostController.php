@@ -25,6 +25,7 @@ class PostController extends Controller
             $search = $request->search;
             $posts = Post::where('title', 'LIKE', "%$search%")->paginate(15);
         }
+
         return view('posts.index', [
             'posts' => $posts,
         ]);
@@ -83,8 +84,6 @@ class PostController extends Controller
     {
         $post = Post::find($id)->delete();
 
-        return view('posts.index', [
-            'posts' => Post::all(),
-        ]);
+        return redirect()->route('users.show', ['id' => Auth::id()]);
     }
 }
