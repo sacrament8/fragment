@@ -41,6 +41,8 @@ Route::post('/answers/{id}/store', 'AnswerController@store')->name('answers.stor
 Route::delete('/posts/{post_id}/answers/{answer_id}', 'AnswerController@remove')->name('answers.remove');
 Route::get('/posts/{post_id}/answers/{answer_id}/edit', 'AnswerController@edit')->name('answers.edit');
 Route::patch('/posts/{post_id}/answers/{answer_id}', 'AnswerController@update')->name('answers.update');
-
+// userInformations
+Route::get('/userinfo/{user}/edit', 'UserInformationController@edit');
+Route::post('/userinfo', 'UserInformationController@update');
 // auth
 Auth::routes();

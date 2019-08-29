@@ -84,8 +84,6 @@ class PostController extends Controller
     {
         $post = Post::find($id)->delete();
 
-        return view('posts.index', [
-            'posts' => Post::all(),
-        ]);
+        return redirect()->route('users.show', ['id' => Auth::id()]);
     }
 }

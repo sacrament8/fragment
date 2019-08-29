@@ -8,18 +8,16 @@
     
     <!-- side menu -->
     <div class="col-3 mt-3">
-      <div class="card">
-        <div class="card-header bg-dark text-light text-center">
-          User Infomation
-        </div>
-        @if (false)  <!--user_infoインスタンスのavaterカラムが空なら-->
-          hoge
+      <div class="card side-height">
+        <h4 class="card-header bg-dark text-light text-center">User Infomation</h4>
+        @isset ($user->userInformation->avatar)  <!--userInformationインスタンスのavatarカラムに画像パスがあれば-->
+          <img class="card-img-top" src="{{ asset('/storage/avatar_images/'.$user->userInformation->avatar) }}" alt="アバター画像">
         @else
           <img class="card-img-top" src="/images/no-image.jpg" alt="アバター画像">
-        @endif
+        @endisset
         <div class="card-body side">
           <div class="text-center mb-3 mt-2">
-            <a href="#" class="btn btn-primary">アバター変更</a>
+            <a href="/userinfo/{{ Auth::id() }}/edit" class="btn btn-primary">アバター変更</a>
           </div>
           <div class="info">
             ユーザー名: {{ Auth::user()->name }}
@@ -41,7 +39,7 @@
         <div class="card-header bg-primary text-light">あなたの質問投稿 (最新の5件)</div>
           <table class="table mb-0 text-nowrap overflow-hidden">
             <!-- 個人の質問投稿が存在しない -->
-            @if (empty($posts))
+            @if ($selfPostsCount == 0)
               <tbody>
                 <tr>
                   <th scope="row">まだあたなの投稿質問はありません</th>
@@ -75,9 +73,9 @@
           <div class="card-header bg-primary text-light">あなたの回答 (最新の5件)</div>
           <table class="table mb-0 text-nowrap overflow-hidden">
             <!-- 個人の回答が存在しない -->
-            @if (empty($answers))
+            @if ($selfAnswersCount == 0)
               <tbody>
-                <tr class="change-opacity">
+                <tr>
                   <th scope="row">まだあたなの回答はありません</th>
                 </tr>
               </tbody>
