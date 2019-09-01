@@ -24,10 +24,9 @@ class UserInformationRequest extends FormRequest
     public function rules()
     {
         return [
-            'avatar' => 'file',
-            'image',
-            'mimes:jpeg,png,jpg,gif',
-            'max:2048',
+            'avatar' => 'file|image|mimes:jpeg,png,jpg,gif|max:2048',
+            'pref' => 'max:5',
+
         ];
     }
 }

@@ -35,8 +35,16 @@ class UserInformationController extends Controller
         if (!empty($request->avatar)) {
             $filename = $request->file('avatar')->store('public/avatar_images');
             $user_info->avatar = basename($filename);
-            $user_info->update(['avatar' => basename($filename)]);
+            $user_info->update([
+                'avatar' => basename($filename),
+                'pref' => $request->pref,
+            ]);
+        } else {
+            $user_info->update([
+                'pref' => $request->pref,
+            ]);
         }
+
         return redirect()->route('users.show', ['id' => Auth::id()]);
     }
 }

@@ -27,6 +27,14 @@
         <form enctype="multipart/form-data" action="/userinfo" method="POST">
           @csrf
           <input class="form-control btn btn-dark my-3" id="avatar_file" type="file" name="avatar">
+          <select name="pref" class='form-control my-2'>
+            <option value="">---お住まいの県---</option>
+            @foreach (Config::get('pref') as $id => $pref)
+              <option value="{{$pref}}" @if($pref==$user_info->pref) selected  @endif>
+                {{$pref}}
+              </option>
+            @endforeach
+          </select>
           <input class="form-control btn btn-primary" type="submit" value="ユーザー情報を更新">
         </form>
       </div>

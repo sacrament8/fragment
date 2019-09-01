@@ -2,10 +2,17 @@
 @section('content')
 @section('css')
   <link rel="stylesheet" href="/css/users_show.css">
+  <link rel="stylesheet" href="/css/marquee.css">
 @endsection
+<div class=container-fruid>
+  <div class="row">
+    <div class="text-warning bg-dark py-1 col-12 marquee">
+      <p class="text-right">{{ $today_weather }}</p>
+    </div>
+  </div>
+</div>
 <div class="container mt-5">
   <div class="row">
-    
     <!-- side menu -->
     <div class="col-3 mt-3">
       <div class="card side-height">
@@ -17,11 +24,16 @@
         @endisset
         <div class="card-body side">
           <div class="text-center mb-3 mt-2">
-            <a href="/userinfo/{{ Auth::id() }}/edit" class="btn btn-primary">アバター変更</a>
+            <a href="/userinfo/{{ Auth::id() }}/edit" class="btn btn-primary">ユーザー情報登録</a>
           </div>
           <div class="info">
             ユーザー名: {{ Auth::user()->name }}
           </div>
+          @if (!empty(Auth::user()->userInformation->pref))
+            <div class="info">
+              所在地: {{ Auth::user()->userInformation->pref }}
+            </div>
+          @endif
           <div class="info">
           質問回数: {{ $selfPostsCount }}
           </div>
