@@ -34,3 +34,7 @@ a:hover {
     height: 250px;
     object-fit: cover;
 }
+.inline-block {
+    display: inline-block;
+    padding-top: 9px;
+}

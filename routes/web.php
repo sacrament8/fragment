@@ -21,6 +21,8 @@ Route::get('/', 'StaticPageController@index')->name('lp');
 // users
 Route::get('/users/{id}', 'UserController@show')->name('users.show');
 Route::get('/users/{id}/edit', 'UserController@edit')->name('users.edit');
+Route::get('/users/{user}/posts', 'UserController@usersposts')->name('users.posts');
+Route::get('/users/{user}/answers', 'UserController@usersanswers')->name('users.answers');
 // posts
 Route::get('/posts/index', 'PostController@index')->name('posts.index');
 Route::get('/posts/create', 'PostController@create')->name('posts.create');
