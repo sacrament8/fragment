@@ -39,8 +39,9 @@ EOD;
                 $max = strtotime($end);
                 $date = rand($min, $max);
                 $date = date('Y-m-d', $date);
+                $user = User::find($user_id);
                 Post::create([
-                    'title' => User::find($user_id)->name . 'の質問投稿' . $post_count,
+                    'title' =>  $user->name . 'の質問投稿' . $post_count,
                     'src' => $testCode,
                     'content' => '質問の内容 その' . $post_count,
                     'user_id' => $user_id,
