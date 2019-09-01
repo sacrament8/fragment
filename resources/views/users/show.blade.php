@@ -4,13 +4,15 @@
   <link rel="stylesheet" href="/css/users_show.css">
   <link rel="stylesheet" href="/css/marquee.css">
 @endsection
-<div class=container-fruid>
-  <div class="row">
-    <div class="text-warning bg-dark py-1 col-12 marquee">
-      <p class="text-right">{{ $today_weather }}</p>
+@if ($user->id == Auth::id())
+  <div class=container-fruid>
+    <div class="row">
+      <div class="text-warning bg-dark py-1 col-12 marquee">
+        <p class="text-right">{{ $today_weather }}</p>
+      </div>
     </div>
   </div>
-</div>
+@endif
 <div class="container mt-5">
   <div class="row">
     <!-- side menu -->
@@ -48,7 +50,13 @@
     <div class="col-9 mt-3">
       <!-- 個人の質問投稿一覧 -->
       <div class="card">
-        <div class="card-header bg-primary text-light">あなたの質問投稿 (最新の5件)</div>
+        <div class="card-header bg-primary text-light">
+          <p class="h5 col-8 align-baseline inline-block">あなたの質問投稿 (最新の5件)</p>
+          @if (!$selfPostsCount == 0)
+            <a href="#" class="col-3 btn btn-success text-light col-3 float-right">全ての質問投稿</a>
+          @endif
+        </div>
+        
           <table class="table mb-0 text-nowrap overflow-hidden">
             <!-- 個人の質問投稿が存在しない -->
             @if ($selfPostsCount == 0)
@@ -82,7 +90,12 @@
         </div>
         <!-- 個人の回答一覧 -->
         <div class="card mt-2">
-          <div class="card-header bg-primary text-light">あなたの回答 (最新の5件)</div>
+          <div class="card-header bg-primary text-light">
+            <p class="h5 col-8 align-baseline inline-block">あなたの回答 (最新の5件)</p>
+            @if (!$selfAnswersCount == 0)
+              <a href="#" class="col-3 btn btn-success text-light col-3 float-right">全ての回答</a>
+            @endif
+          </div>
           <table class="table mb-0 text-nowrap overflow-hidden">
             <!-- 個人の回答が存在しない -->
             @if ($selfAnswersCount == 0)
@@ -102,7 +115,7 @@
                 @foreach ($answers as $answer)
                   <tr class="change-opacity">
                     <td>
-                      <a class="table_link text-dark" href="{{ route('posts.show', ["id"=>$post->id]) }}">
+                      <a class="table_link text-dark" href="{{ route('posts.show', ["id"=>$answer->post_id]) }}">
                         {{ $answer->post->title }}
                       </a>
                     </td>
