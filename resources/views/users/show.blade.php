@@ -1,9 +1,10 @@
 @extends('layouts.app')
-@section('content')
 @section('css')
   <link rel="stylesheet" href="/css/users_show.css">
   <link rel="stylesheet" href="/css/marquee.css">
 @endsection
+@section('content')
+
 @if ($user->id == Auth::id())
   <div class=container-fruid>
     <div class="row">
@@ -53,10 +54,9 @@
         <div class="card-header bg-primary text-light">
           <p class="h5 col-8 align-baseline inline-block">あなたの質問投稿 (最新の5件)</p>
           @if (!$selfPostsCount == 0)
-            <a href="#" class="col-3 btn btn-success text-light col-3 float-right">全ての質問投稿</a>
+            <a href="{{ route('users.posts', ['user'=>$user->id]) }}" class="col-3 btn btn-success text-light col-3 float-right">全ての質問投稿</a>
           @endif
         </div>
-        
           <table class="table mb-0 text-nowrap overflow-hidden">
             <!-- 個人の質問投稿が存在しない -->
             @if ($selfPostsCount == 0)
@@ -93,7 +93,7 @@
           <div class="card-header bg-primary text-light">
             <p class="h5 col-8 align-baseline inline-block">あなたの回答 (最新の5件)</p>
             @if (!$selfAnswersCount == 0)
-              <a href="#" class="col-3 btn btn-success text-light col-3 float-right">全ての回答</a>
+              <a href="{{ route('users.answers', ['user'=>$user->id]) }}" class="col-3 btn btn-success text-light col-3 float-right">全ての回答</a>
             @endif
           </div>
           <table class="table mb-0 text-nowrap overflow-hidden">
