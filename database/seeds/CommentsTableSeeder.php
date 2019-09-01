@@ -14,7 +14,7 @@ class CommentsTableSeeder extends Seeder
      */
     public function run()
     {
-        for ($board_id = 1; $board_id <= 303; $board_id++) {
+        for ($board_id = 2; $board_id <= 304; $board_id++) {
             for ($i = 1; $i <= 10; $i++) {
                 $user_id = rand(1, 101);
                 $start = Carbon::create("2019", "1", "1", "0", "0");
