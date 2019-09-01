@@ -19,10 +19,10 @@ class UserController extends Controller
     public function show(int $id, GetWeatherService $getweatherservice)
     {
         $user = User::find($id);
-        $posts = Post::where('user_id', Auth::id())->orderBy('created_at', 'desc')->take(5)->get();
-        $answers = Answer::where('user_id', Auth::id())->orderBy('created_at', 'desc')->take(5)->get();
-        $selfPostsCount = Post::where('user_id', Auth::id())->count();  // ログインユーザの投稿件数
-        $selfAnswersCount = Answer::where('user_id', Auth::id())->count();  // ログインユーザの回答件数
+        $posts = Post::where('user_id', $id)->orderBy('created_at', 'desc')->take(5)->get();
+        $answers = Answer::where('user_id', $id)->orderBy('created_at', 'desc')->take(5)->get();
+        $selfPostsCount = Post::where('user_id', $id)->count();  // ログインユーザの投稿件数
+        $selfAnswersCount = Answer::where('user_id', $id)->count();  // ログインユーザの回答件数
 
         $today_weather = $getweatherservice->getWeather(User::find($id));    // 外部apiから今日の天気取得して整形
         return view('users.show', [
