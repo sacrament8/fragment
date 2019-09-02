@@ -31,7 +31,7 @@ public function update(UpdateAnswer $request, int $post_id, int $answer_id)
 EOD;
 
         // 質問投稿ダミーデータ
-        for ($user_id = 2; $user_id <= 102; $user_id++) {
+        for ($user_id = 1; $user_id <= 101; $user_id++) {
             for ($post_count = 1; $post_count <= 3; $post_count++) {
                 $start = Carbon::create("2019", "1", "1", "0", "0");
                 $end = Carbon::create("2019", "9", "5", "0", "0");
