@@ -2,6 +2,8 @@
 @section('css')
   <link rel="stylesheet" href="/css/users_show.css">
   <link rel="stylesheet" href="/css/marquee.css">
+  <link href="{{ mix('css/app.css') }}" rel="stylesheet" type="text/css">
+  <meta name="csrf-token" content="{{ csrf_token() }}">
 @endsection
 @section('content')
 
@@ -26,9 +28,45 @@
           <img class="card-img-top" src="/images/no-image.jpg" alt="アバター画像">
         @endisset
         <div class="card-body side">
-          <div class="text-center mb-3 mt-2">
-            <a href="/userinfo/{{ Auth::id() }}/edit" class="btn btn-primary">ユーザー情報登録</a>
+          <div class="text-center mb-1 mt-2">
+            <a href="/userinfo/{{ Auth::id() }}/edit" class="btn btn-primary col-12">ユーザー情報登録</a>
           </div>
+          <!--follow button-->
+          @if (Auth::user()->id != $user->id)
+            @if (Auth::user()->isEachFollow($user))
+              <div class="text-center mb-3 mt-1">
+                <form name="follow" action="/follow/{{$user->id}}" method="POST">
+                  @method('DELETE')
+                  @csrf
+                  <a class="btn btn-primary col-12" href="javascript:follow.submit()">相互フォロー中</a>
+                </form>
+              </div>
+            @elseif (Auth::user()->isFollow($user))
+              <div class="text-center mb-3 mt-1">
+                <form name="follow" action="/follow/{{$user->id}}" method="POST">
+                  @method('DELETE')
+                  @csrf
+                  <a class="btn btn-primary col-12" href="javascript:follow.submit()">フォロー解除</a>
+                </form>
+              </div>
+            @elseif ($user->isFollowed())
+              <div class="text-center mb-3 mt-1">
+                <form name="follow" action="/follow/{{$user->id}}" method="POST">
+                  @csrf
+                  <a class="btn btn-primary col-12" href="javascript:follow.submit()">相互フォローする</a>
+                </form>
+              </div>
+            @else
+              <div class="text-center mb-3 mt-1">
+                <form name="follow" action="/follow/{{$user->id}}" method="POST">
+                  @csrf
+                  <a class="btn btn-primary col-12" href="javascript:follow.submit()">フォローする</a>
+                </form>
+              </div>
+            @endif
+          @else
+            <a class="btn btn-primary col-12" href="/followers">フォロー管理</a>
+          @endif
           <div class="info">
             ユーザー名: {{ Auth::user()->name }}
           </div>
@@ -131,4 +169,5 @@
     </div>
   </div>
 </div>
+<script src="{{ mix('js/app.js') }}"></script>
 @endsection
