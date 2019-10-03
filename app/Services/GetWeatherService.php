@@ -84,6 +84,7 @@ class GetWeatherService
                     break;
                 case '滋賀県':
                     $city = '250010';
+                    break;
                 case '京都府':
                     $city = '260010';
                     break;

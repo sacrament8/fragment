@@ -46,5 +46,13 @@ Route::patch('/posts/{post_id}/answers/{answer_id}', 'AnswerController@update')-
 // userInformations
 Route::get('/userinfo/{user}/edit', 'UserInformationController@edit');
 Route::post('/userinfo', 'UserInformationController@update');
+// FollowUser
+Route::post('/follow/{id}', 'FollowUserController@store');
+Route::delete('/follow/{id}', 'FollowUserController@destroy');
+Route::get('/followers', 'FollowUserController@index')->name('follow.index');
+// chat
+Broadcast::channel('chat', function () {
+    return true;
+});
 // auth
 Auth::routes();
